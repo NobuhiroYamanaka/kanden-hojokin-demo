@@ -1,0 +1,21 @@
+node_modules/
+.env
+.env.local
+.env.*.local
+*.log
+dist/
+dist-ssr/
+.vite/
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Test/coverage
+coverage/
+*.tmp
+
+# 上位ディレクトリの機密情報の誤コミット防止（保険）
+_Credentials/
+**/_Credentials/

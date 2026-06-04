@@ -1,0 +1,12 @@
+entrypoint = "src/main.tsx"
+modules = ["nodejs-20"]
+
+[nix]
+channel = "stable-24_05"
+
+[run]
+args = ["npm", "run", "dev"]
+
+[[ports]]
+localPort = 5173
+externalPort = 80

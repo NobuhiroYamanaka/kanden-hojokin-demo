@@ -1,0 +1,101 @@
+{
+  "13104": [
+    {
+      "psid": "MOCK-13104-0001",
+      "cityCode": "13104",
+      "cityName": "東京都新宿区",
+      "officialName": "新宿区児童手当（モック）",
+      "summary": "中学校卒業までの児童を養育している方に支給。第1子・第2子は月額10,000円〜15,000円、第3子以降は月額15,000円。",
+      "serviceCode": "CHILDCARE",
+      "isEApplicable": true,
+      "acceptStart": "2026-04-01",
+      "acceptEnd": "2026-12-31",
+      "description": "児童手当法に基づき、新宿区在住の保護者に支給される手当。所得制限あり。電子申請に対応しており、マイナポータルから申請可能。",
+      "eligibleConditions": [
+        "新宿区在住",
+        "中学校卒業までの児童を養育",
+        "所得制限限度額未満"
+      ],
+      "benefitAmount": "月額 10,000円〜15,000円（児童の年齢・順位による）",
+      "contact": "新宿区 子ども家庭部 子ども家庭課 03-5273-4520"
+    },
+    {
+      "psid": "MOCK-13104-0002",
+      "cityCode": "13104",
+      "cityName": "東京都新宿区",
+      "officialName": "新宿区子ども医療費助成（モック）",
+      "summary": "0歳から中学校卒業までの子どもの保険診療自己負担分を助成。所得制限なし。",
+      "serviceCode": "CHILDCARE",
+      "isEApplicable": true,
+      "acceptStart": "2026-04-01",
+      "acceptEnd": null,
+      "description": "新宿区独自の制度として、所得制限なしで医療費自己負担分を全額助成。",
+      "eligibleConditions": [
+        "新宿区在住",
+        "0歳〜中学校卒業までの児童",
+        "健康保険加入"
+      ],
+      "benefitAmount": "保険診療自己負担分を全額助成",
+      "contact": "新宿区 子ども医療費助成担当 03-5273-4254"
+    },
+    {
+      "psid": "MOCK-13104-0003",
+      "cityCode": "13104",
+      "cityName": "東京都新宿区",
+      "officialName": "新宿区出産育児一時金（モック）",
+      "summary": "出産1児につき50万円を支給。直接支払制度の利用可能。",
+      "serviceCode": "CHILDCARE",
+      "isEApplicable": false,
+      "acceptStart": "2026-04-01",
+      "acceptEnd": null,
+      "description": "国民健康保険加入者で出産した方に支給。窓口での申請が必要。",
+      "eligibleConditions": [
+        "新宿区国民健康保険加入者",
+        "妊娠4ヶ月以上での出産"
+      ],
+      "benefitAmount": "出産1児につき 50万円",
+      "contact": "新宿区 国民健康保険給付係 03-5273-4146"
+    }
+  ],
+  "27100": [
+    {
+      "psid": "MOCK-27100-0001",
+      "cityCode": "27100",
+      "cityName": "大阪府大阪市",
+      "officialName": "大阪市児童手当（モック）",
+      "summary": "中学校卒業までの児童を養育している方に支給。電子申請対応。",
+      "serviceCode": "CHILDCARE",
+      "isEApplicable": true,
+      "acceptStart": "2026-04-01",
+      "acceptEnd": "2026-12-31",
+      "description": "児童手当法に基づき大阪市が支給する手当。マイナポータル経由で電子申請可能。",
+      "eligibleConditions": [
+        "大阪市在住",
+        "中学校卒業までの児童を養育",
+        "所得制限限度額未満"
+      ],
+      "benefitAmount": "月額 10,000円〜15,000円",
+      "contact": "大阪市 こども青少年局 06-6208-8025"
+    },
+    {
+      "psid": "MOCK-27100-0002",
+      "cityCode": "27100",
+      "cityName": "大阪府大阪市",
+      "officialName": "大阪市こども医療費助成（モック）",
+      "summary": "18歳までの医療費自己負担分を助成（所得制限あり）。",
+      "serviceCode": "CHILDCARE",
+      "isEApplicable": true,
+      "acceptStart": "2026-04-01",
+      "acceptEnd": null,
+      "description": "大阪市独自で18歳までの拡充。マイナポータル経由で電子申請可能。",
+      "eligibleConditions": [
+        "大阪市在住",
+        "0歳〜18歳到達後最初の3月31日まで",
+        "所得制限内"
+      ],
+      "benefitAmount": "保険診療自己負担分を助成（1日500円の自己負担あり）",
+      "contact": "大阪市 こども青少年局 医療助成担当 06-6208-9966"
+    }
+  ],
+  "EMPTY_DEMO": []
+}
