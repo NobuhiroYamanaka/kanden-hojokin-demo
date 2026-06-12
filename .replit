@@ -4,9 +4,25 @@ modules = ["nodejs-20"]
 [nix]
 channel = "stable-24_05"
 
+# ─── 開発時 (Replit IDE で Run ボタン押下) ─────────────────────
+# Vite dev server (5173) + Express (3001) を concurrently で並列起動。
+# Vite proxy 経由で /api/* → Express。ベーシック認証は Vite と Express 両方に効く。
 [run]
 args = ["npm", "run", "dev"]
 
+# ─── 本番デプロイ (Reserved VM) ─────────────────────────────
+# build: フロントを dist/ に出力 + Express を server/dist/ にビルド
+# run:   Express のみ起動 (フロント dist/ を静的配信、API /api/* も同一プロセス)
+# Reserved VM では PORT 環境変数が自動設定される
+[deployment]
+deploymentTarget = "gce"
+build = ["npm", "run", "build"]
+run = ["npm", "run", "start"]
+
+[[ports]]
+localPort = 3001
+externalPort = 80
+
 [[ports]]
 localPort = 5173
-externalPort = 80
+externalPort = 3000

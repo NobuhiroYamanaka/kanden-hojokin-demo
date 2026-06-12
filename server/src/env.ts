@@ -1,4 +1,12 @@
-import "dotenv/config";
+import dotenv from "dotenv";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+// __dirname は dev時=server/src, 本番ビルド=server/dist のいずれか。
+// どちらでも ../.env は server/.env を指す。
+// Replit Reserved VM では Secrets として渡されるため .env が無くてもOK（dotenv は黙ってスキップ）。
+const __dirname = dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: join(__dirname, "../.env"), quiet: true });
 
 function required(name: string): string {
   const v = process.env[name];
