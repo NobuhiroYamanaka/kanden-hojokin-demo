@@ -1,12 +1,22 @@
 node_modules/
+**/node_modules/
 .env
 .env.local
 .env.*.local
+server/.env
+server/.env.local
+server/dist/
 *.log
 dist/
 dist-ssr/
 .vite/
 .DS_Store
+
+# tsc -b による設定ファイルのコンパイル成果物（混乱の元）
+vite.config.js
+vite.config.d.ts
+tsconfig.tsbuildinfo
+tsconfig.node.tsbuildinfo
 
 # Editor
 .vscode/

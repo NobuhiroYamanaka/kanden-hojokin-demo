@@ -1,3 +1,5 @@
+// フロントエンド側 src/lib/types.ts と互換になる型定義
+
 export type ServiceCode = "CHILDCARE";
 
 export type ListSearchParams = {
@@ -36,13 +38,8 @@ export type ListSearchResult = {
   items: SubsidyListItem[];
 };
 
-export type Region = {
-  prefectureName: string;
-  cityName: string;
-  cityCode: string;
-};
+// --- LLM ヒアリング関連 ---
 
-// ===== LLM ヒアリング =====
 export type ChatMessage = {
   role: "user" | "assistant";
   content: string;
@@ -68,7 +65,8 @@ export type ChatResponse =
       profile: UserProfile;
     };
 
-// ===== マッチング結果 =====
+// --- マッチング結果 ---
+
 export type MatchedSubsidy = SubsidyDetail & {
   matchScore: number;
   matchReason: string;

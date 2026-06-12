@@ -62,7 +62,7 @@ export function createMockMynaApi(): MynaApi {
   };
 }
 
-// 将来: 実サーバ実装
+// 実サーバ実装：Express サーバ（server/）の /api/myna/* を呼び出す
 export function createServerMynaApi(baseUrl: string): MynaApi {
   return {
     async searchList(params) {
@@ -74,14 +74,15 @@ export function createServerMynaApi(baseUrl: string): MynaApi {
       if (!res.ok) {
         return { ok: false, hitCount: 0, errors: ["EE_NETWORK"], items: [] };
       }
-      return res.json();
+      return (await res.json()) as ListSearchResult;
     },
     async searchDetail(psid) {
-      const res = await fetch(
-        `${baseUrl}/api/myna/detail?psid=${encodeURIComponent(psid)}`
-      );
+      // baseUrl が空（Vite プロキシ経由の相対URL）でも動くよう、URL コンストラクタを使わず文字列連結。
+      const qs = `psid=${encodeURIComponent(psid)}`;
+      const res = await fetch(`${baseUrl}/api/myna/detail?${qs}`);
       if (!res.ok) return null;
-      return res.json();
+      const data = await res.json();
+      return data as SubsidyDetail | null;
     },
   };
 }
