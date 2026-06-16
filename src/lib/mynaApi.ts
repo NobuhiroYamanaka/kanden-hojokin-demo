@@ -88,7 +88,7 @@ export function createServerMynaApi(baseUrl: string): MynaApi {
 }
 
 const useMock = (import.meta.env.VITE_USE_MOCK ?? "true") !== "false";
-const baseUrl = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3001";
+const baseUrl = import.meta.env.VITE_API_BASE_URL ?? "";
 
 export const mynaApi: MynaApi = useMock
   ? createMockMynaApi()
