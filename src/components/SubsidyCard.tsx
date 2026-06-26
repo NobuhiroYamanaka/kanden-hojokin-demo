@@ -112,9 +112,12 @@ export default function SubsidyCard({ item, matchReason, matchScore }: Props) {
       <button
         type="button"
         onClick={toggle}
-        className="mt-3 text-sm text-ink-700 underline-offset-2 hover:underline"
+        className="mt-3 inline-flex items-center gap-1.5 rounded-md border border-ink-300 bg-ink-100 px-3.5 py-2 text-sm font-medium text-ink-900 hover:bg-ink-200 hover:border-ink-700 transition-colors"
       >
         {open ? "詳細を閉じる" : "詳細を見る"}
+        <span className={"text-xs transition-transform " + (open ? "rotate-180" : "")}>
+          ∨
+        </span>
       </button>
 
       {open && (
