@@ -158,8 +158,12 @@ export default function Result() {
       });
     } else {
       // クイック経由: 直接 mynaApi.searchList
+      // URLクエリ ?keywords=a,b,c から検索キーワードを取得（空文字なら全件取得）
+      const keywordsParam = searchParams.get("keywords");
+      const keyword =
+        keywordsParam && keywordsParam.length > 0 ? keywordsParam.split(",") : [];
       mynaApi
-        .searchList({ cityCode, keyword: ["子育て"], serviceCode: "CHILDCARE" })
+        .searchList({ cityCode, keyword })
         .then((r) => {
           if (cancelled) return;
           setState({

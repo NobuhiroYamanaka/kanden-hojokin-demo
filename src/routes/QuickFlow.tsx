@@ -3,24 +3,27 @@ import { useNavigate } from "react-router-dom";
 import RegionPicker from "../components/RegionPicker";
 
 const THEMES = [
-  { key: "childcare", label: "子育て支援", available: true },
-  { key: "medical", label: "医療", available: false },
-  { key: "education", label: "教育", available: false },
-  { key: "housing", label: "住まい", available: false },
+  { key: "all", label: "すべて", keywords: [] as string[] },
+  { key: "childcare", label: "子育て支援", keywords: ["子育て", "保育", "児童"] },
+  { key: "medical", label: "医療", keywords: ["医療", "健康", "病院"] },
+  { key: "education", label: "教育", keywords: ["教育", "学校", "学習"] },
+  { key: "housing", label: "住まい", keywords: ["住宅", "住まい", "家賃"] },
 ] as const;
 
 export default function QuickFlow() {
   const navigate = useNavigate();
   const [cityCode, setCityCode] = useState<string | null>(null);
-  const [theme, setTheme] = useState<string>("childcare");
+  const [theme, setTheme] = useState<string>("all");
 
   const canSubmit = Boolean(cityCode && theme);
 
   function submit() {
     if (!canSubmit) return;
+    const selected = THEMES.find((t) => t.key === theme);
     const params = new URLSearchParams({
       cityCode: cityCode!,
       theme,
+      keywords: selected ? selected.keywords.join(",") : "",
       source: "quick",
     });
     navigate(`/result?${params.toString()}`);
@@ -69,7 +72,7 @@ export default function QuickFlow() {
           </h2>
         </div>
         <p className="mt-2 text-xs text-ink-700">
-          MVPでは子育て支援のみ対応しています。他のテーマは Phase 2 で順次追加予定です。
+          テーマを選んでください。検証環境のデータ範囲によっては、テーマによって検索結果が0件になる場合があります。
         </p>
 
         <div className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -79,21 +82,15 @@ export default function QuickFlow() {
               <button
                 key={t.key}
                 type="button"
-                disabled={!t.available}
                 onClick={() => setTheme(t.key)}
                 className={
                   "rounded-md border bg-white px-4 py-3 text-left transition-colors " +
-                  (!t.available
-                    ? "border-ink-300 text-ink-500 cursor-not-allowed opacity-60"
-                    : selected
+                  (selected
                     ? "border-emerald-600 bg-emerald-50 text-ink-900"
                     : "border-ink-300 text-ink-900 hover:border-ink-700")
                 }
               >
                 <div className="text-sm font-medium">{t.label}</div>
-                {!t.available && (
-                  <div className="text-xs mt-1">Phase 2 対応予定</div>
-                )}
               </button>
             );
           })}
