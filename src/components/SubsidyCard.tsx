@@ -59,13 +59,13 @@ export default function SubsidyCard({ item, matchReason, matchScore }: Props) {
 
   const isOutOfScope = matchScore === 0;
   const articleClass = isOutOfScope
-    ? "rounded-lg border border-ink-300 bg-ink-100/50 p-5 opacity-70"
-    : "rounded-lg border border-ink-300 bg-white p-5";
+    ? "rounded-lg border border-ink-300 bg-ink-100/50 p-5 opacity-70 overflow-hidden"
+    : "rounded-lg border border-ink-300 bg-white p-5 overflow-hidden";
 
   return (
     <article className={articleClass}>
       <div className="flex items-start justify-between gap-4">
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <div className="text-xs text-ink-500">{item.cityName}</div>
           <h3 className="text-base font-semibold text-ink-900 mt-1">
             {item.officialName}
@@ -127,7 +127,7 @@ export default function SubsidyCard({ item, matchReason, matchScore }: Props) {
             <>
               <div>
                 <div className="text-xs text-ink-500 mb-1">制度概要</div>
-                <p className="leading-relaxed whitespace-pre-wrap">
+                <p className="leading-relaxed whitespace-pre-wrap break-words">
                   {renderTextWithLinks(detail.description)}
                 </p>
               </div>
@@ -144,7 +144,7 @@ export default function SubsidyCard({ item, matchReason, matchScore }: Props) {
               {detail.benefitAmount && (
                 <div>
                   <div className="text-xs text-ink-500 mb-1">支給内容</div>
-                  <p className="whitespace-pre-wrap">
+                  <p className="whitespace-pre-wrap break-words">
                     {renderTextWithLinks(detail.benefitAmount)}
                   </p>
                 </div>
@@ -152,7 +152,7 @@ export default function SubsidyCard({ item, matchReason, matchScore }: Props) {
               {detail.contact && detail.contact !== "—" && (
                 <div>
                   <div className="text-xs text-ink-500 mb-1">問い合わせ</div>
-                  <p className="whitespace-pre-wrap">
+                  <p className="whitespace-pre-wrap break-words">
                     {renderTextWithLinks(detail.contact)}
                   </p>
                 </div>
